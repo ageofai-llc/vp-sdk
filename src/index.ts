@@ -1,12 +1,12 @@
 import { HttpClient } from "./utils/http";
-import { AuthClient } from "./clients/AuthClient";
-import { SessionClient } from "./clients/SessionClient";
-import { AgentClient } from "./clients/AgentClient";
-import { VoiceClient } from "./clients/VoiceClient";
-import { UserClient } from "./clients/UserClient";
-import { WebhookClient } from "./clients/WebhookClient";
-import { AdminClient } from "./clients/AdminClient";
-import { StreamClient } from "./clients/StreamClient";
+import { AuthClient } from "./client/AuthClient";
+import { SessionClient } from "./client/SessionClient";
+import { AgentClient } from "./client/AgentClient";
+import { VoiceClient } from "./client/VoiceClient";
+import { UserClient } from "./client/UserClient";
+import { WebhookClient } from "./client/WebhookClient";
+import { AdminClient } from "./client/AdminClient";
+import { StreamClient } from "./client/StreamClient";
 
 export interface ScoreexlVoiceSdkConfig {
   baseURL?: string;
