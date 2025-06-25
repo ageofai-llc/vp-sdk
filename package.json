@@ -1,0 +1,29 @@
+{
+  "name": "scoreexl-voice-assistant-sdk",
+  "version": "1.0.0",
+  "description": "Node.js SDK for the Scoreexl Voice Assistant API",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "Scoreexl",
+    "voice",
+    "ai",
+    "sdk"
+  ],
+  "author": "Nelson Fulfil",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.7.2"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.2",
+    "typescript": "^5.4.5"
+  },
+  "files": [
+    "dist"
+  ]
+}
