@@ -7,6 +7,8 @@ import { UserClient } from "./client/UserClient";
 import { WebhookClient } from "./client/WebhookClient";
 import { AdminClient } from "./client/AdminClient";
 import { StreamClient } from "./client/StreamClient";
+import { HealthClient } from "./client/HealthClient";
+import { APIKeyClient } from "./client/APIKeyClient";
 
 export interface ScoreexlVoiceSdkConfig {
   baseURL?: string;
@@ -24,6 +26,8 @@ export class ScoreexlVoiceSdk {
   public webhooks: WebhookClient;
   public admin: AdminClient;
   public stream: StreamClient;
+  public health: HealthClient;
+  public apiKey: APIKeyClient;
 
   constructor(config: ScoreexlVoiceSdkConfig = {}) {
     const DEFAULT_BASE_URL = "https://voiceagentv2.scoreexl.com";
@@ -40,6 +44,8 @@ export class ScoreexlVoiceSdk {
     this.webhooks = new WebhookClient(this.httpClient);
     this.admin = new AdminClient(this.httpClient);
     this.stream = new StreamClient(this.httpClient);
+    this.health = new HealthClient(this.httpClient);
+    this.apiKey = new APIKeyClient(this.httpClient);
   }
 
   setAuthToken(token: string) {
