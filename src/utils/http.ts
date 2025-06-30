@@ -1,10 +1,10 @@
 import axios, { type AxiosInstance, type AxiosRequestConfig } from "axios";
+import type { ScoreexlVoiceSdkConfig } from "../types";
 import {
   AuthenticationError,
   ScoreexlVoiceError,
   ValidationError,
 } from "./errors";
-import type { ScoreexlVoiceSdkConfig } from "../types";
 
 export class HttpClient {
   private client: AxiosInstance;

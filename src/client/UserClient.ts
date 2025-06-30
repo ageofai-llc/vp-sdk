@@ -1,5 +1,5 @@
-import type { HttpClient } from "../utils/http";
 import type { UserOut } from "../types";
+import type { HttpClient } from "../utils/http";
 
 export class UserClient {
   constructor(private http: HttpClient) {}

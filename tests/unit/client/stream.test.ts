@@ -1,10 +1,10 @@
+import fetchMock from "jest-fetch-mock";
+import { ReadableStream } from "stream/web";
 import {
   createTestContext,
-  type TestContext,
   setupAuthenticatedClient,
+  type TestContext,
 } from "../../setup/test-utils";
-import { ReadableStream } from "stream/web";
-import fetchMock from "jest-fetch-mock";
 
 describe("StreamClient", () => {
   let context: TestContext;

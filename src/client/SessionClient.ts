@@ -1,5 +1,10 @@
+import type {
+  AgentControl,
+  AgentResponse,
+  SessionOut,
+  TextMessage,
+} from "../types";
 import type { HttpClient } from "../utils/http";
-import type { SessionOut, TextMessage, AgentResponse, AgentControl } from "../types";
 
 export class SessionClient {
   constructor(private http: HttpClient) {}

@@ -1,5 +1,5 @@
-import type { HttpClient } from "../utils/http";
 import type { WebhookCreate, WebhookOut } from "../types";
+import type { HttpClient } from "../utils/http";
 
 export class WebhookClient {
   constructor(private http: HttpClient) {}

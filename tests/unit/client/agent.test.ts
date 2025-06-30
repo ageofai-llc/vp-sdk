@@ -1,8 +1,8 @@
 import {
   createTestContext,
-  type TestContext,
-  setupAuthenticatedClient,
   mockAgent,
+  setupAuthenticatedClient,
+  type TestContext,
 } from "../../setup/test-utils";
 
 describe("AgentClient", () => {

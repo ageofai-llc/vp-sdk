@@ -1,7 +1,7 @@
 import {
   createTestContext,
-  type TestContext,
   setupAuthenticatedClient,
+  type TestContext,
 } from "../../setup/test-utils";
 
 describe("WebhookClient", () => {

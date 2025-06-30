@@ -1,5 +1,5 @@
-import type { HttpClient } from "../utils/http";
 import { EventEmitter } from "events";
+import type { HttpClient } from "../utils/http";
 
 export class StreamClient {
   constructor(private http: HttpClient) {}

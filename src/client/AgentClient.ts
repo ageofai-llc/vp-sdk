@@ -1,13 +1,13 @@
-import type { HttpClient } from "../utils/http";
 import type {
+  AgentAnalyticsOut,
   AgentCreate,
   AgentOut,
-  AgentAnalyticsOut,
   AgentTemplateCreate,
   AgentTemplateOut,
   AgentVersionCreate,
   AgentVersionOut,
 } from "../types";
+import type { HttpClient } from "../utils/http";
 
 export class AgentClient {
   constructor(private http: HttpClient) {}

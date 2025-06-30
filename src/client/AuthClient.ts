@@ -1,9 +1,9 @@
-import type { HttpClient } from "../utils/http";
 import type {
   Body_login_for_access_token_token_post,
   UserCreate,
   UserOut,
 } from "../types";
+import type { HttpClient } from "../utils/http";
 
 type AuthOptions = Partial<
   Omit<Body_login_for_access_token_token_post, "username" | "password">

@@ -1,6 +1,6 @@
-import fetchMock from "jest-fetch-mock";
-import MockAdapter from "axios-mock-adapter";
 import axios from "axios";
+import MockAdapter from "axios-mock-adapter";
+import fetchMock from "jest-fetch-mock";
 
 fetchMock.enableMocks();
 

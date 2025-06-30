@@ -1,7 +1,7 @@
 import {
   createTestContext,
-  type TestContext,
   mockUser,
+  type TestContext,
 } from "../../setup/test-utils";
 
 describe("AuthClient", () => {
