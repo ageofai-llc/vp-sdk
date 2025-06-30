@@ -6,7 +6,8 @@
   "types": "dist/index.d.ts",
   "scripts": {
     "build": "tsc",
-    "prepublishOnly": "npm run build"
+    "prepublishOnly": "npm run build",
+    "test": "jest"
   },
   "keywords": [
     "Scoreexl",
@@ -20,7 +21,12 @@
     "axios": "^1.7.2"
   },
   "devDependencies": {
+    "@types/jest": "^30.0.0",
     "@types/node": "^20.14.2",
+    "axios-mock-adapter": "^2.1.0",
+    "jest": "^30.0.3",
+    "jest-fetch-mock": "^3.0.3",
+    "ts-jest": "^29.4.0",
     "typescript": "^5.4.5"
   },
   "files": [
