@@ -1,6 +1,6 @@
 import {
   createTestContext,
-  TestContext,
+  type TestContext,
   setupAuthenticatedClient,
 } from "../../setup/test-utils";
 
@@ -50,7 +50,7 @@ describe("APIKeyClient", () => {
         .reply(400, { message: "Invalid key name" });
 
       await expect(
-        context.client.apiKey.createAPIKey({ name: "" })
+        context.client.apiKey.createAPIKey({ name: "" }),
       ).rejects.toThrow();
     });
   });
@@ -60,7 +60,7 @@ describe("APIKeyClient", () => {
       context.mock.onDelete("/api-keys/1").reply(204);
 
       await expect(
-        context.client.apiKey.deleteAPIKey(1)
+        context.client.apiKey.deleteAPIKey(1),
       ).resolves.toBeUndefined();
     });
 

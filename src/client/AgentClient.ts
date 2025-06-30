@@ -1,5 +1,5 @@
-import { HttpClient } from "../utils/http";
-import {
+import type { HttpClient } from "../utils/http";
+import type {
   AgentCreate,
   AgentOut,
   AgentAnalyticsOut,
@@ -25,7 +25,7 @@ export class AgentClient {
       includePublic?: boolean;
       category?: string;
       search?: string;
-    } = {}
+    } = {},
   ): Promise<AgentOut[]> {
     return this.http.request<AgentOut[]>({
       method: "GET",
@@ -76,7 +76,7 @@ export class AgentClient {
   }
 
   async createAgentTemplate(
-    template: AgentTemplateCreate
+    template: AgentTemplateCreate,
   ): Promise<AgentTemplateOut> {
     return this.http.request<AgentTemplateOut>({
       method: "POST",
@@ -86,10 +86,7 @@ export class AgentClient {
   }
 
   async listAgentTemplates(
-    options: {
-      category?: string;
-      publicOnly?: boolean;
-    } = {}
+    options: { category?: string; publicOnly?: boolean } = {},
   ): Promise<AgentTemplateOut[]> {
     return this.http.request<AgentTemplateOut[]>({
       method: "GET",
@@ -103,7 +100,7 @@ export class AgentClient {
 
   async createAgentFromTemplate(
     templateId: number,
-    agentName: string
+    agentName: string,
   ): Promise<AgentOut> {
     return this.http.request<AgentOut>({
       method: "POST",
@@ -114,7 +111,7 @@ export class AgentClient {
 
   async createAgentVersion(
     agentId: number,
-    version: AgentVersionCreate
+    version: AgentVersionCreate,
   ): Promise<AgentVersionOut> {
     return this.http.request<AgentVersionOut>({
       method: "POST",
@@ -140,7 +137,7 @@ export class AgentClient {
 
   async activateAgentVersion(
     agentId: number,
-    versionId: number
+    versionId: number,
   ): Promise<void> {
     return this.http.request<void>({
       method: "PUT",
@@ -154,7 +151,7 @@ export class AgentClient {
       search?: string;
       limit?: number;
       offset?: number;
-    } = {}
+    } = {},
   ): Promise<any> {
     return this.http.request<any>({
       method: "GET",

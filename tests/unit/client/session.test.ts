@@ -1,8 +1,8 @@
 import {
   createTestContext,
-  TestContext,
-  setupAuthenticatedClient,
   mockSession,
+  setupAuthenticatedClient,
+  type TestContext,
 } from "../../setup/test-utils";
 
 describe("SessionClient", () => {
@@ -85,7 +85,7 @@ describe("SessionClient", () => {
       context.mock.onPost("/sessions/1/end").reply(204);
 
       await expect(
-        context.client.sessions.endSession(1)
+        context.client.sessions.endSession(1),
       ).resolves.toBeUndefined();
     });
 
@@ -115,7 +115,7 @@ describe("SessionClient", () => {
         .reply(500, { message: "Failed to send message" });
 
       await expect(
-        context.client.sessions.sendMessage(1, { content: "Hello, agent!" })
+        context.client.sessions.sendMessage(1, { content: "Hello, agent!" }),
       ).rejects.toThrow();
     });
   });
@@ -125,7 +125,7 @@ describe("SessionClient", () => {
       context.mock.onPost("/sessions/1/agent/control").reply(204);
 
       await expect(
-        context.client.sessions.controlAgent(1, { command: "pause" })
+        context.client.sessions.controlAgent(1, { command: "pause" }),
       ).resolves.toBeUndefined();
     });
 
@@ -135,7 +135,7 @@ describe("SessionClient", () => {
         .reply(400, { message: "Invalid command" });
 
       await expect(
-        context.client.sessions.controlAgent(1, { command: "invalid" })
+        context.client.sessions.controlAgent(1, { command: "invalid" }),
       ).rejects.toThrow();
     });
   });
@@ -166,7 +166,7 @@ describe("SessionClient", () => {
       context.mock.onPost("/sessions/1/logs").reply(204);
 
       await expect(
-        context.client.sessions.addConversationLog(1, { message: "Log entry" })
+        context.client.sessions.addConversationLog(1, { message: "Log entry" }),
       ).resolves.toBeUndefined();
     });
 
@@ -184,7 +184,7 @@ describe("SessionClient", () => {
       context.mock.onPost("/sessions/1/agent/prompt").reply(204);
 
       await expect(
-        context.client.sessions.updateAgentPrompt(1, { prompt: "New prompt" })
+        context.client.sessions.updateAgentPrompt(1, { prompt: "New prompt" }),
       ).resolves.toBeUndefined();
     });
 
@@ -194,7 +194,7 @@ describe("SessionClient", () => {
         .reply(400, { message: "Invalid prompt" });
 
       await expect(
-        context.client.sessions.updateAgentPrompt(1, { prompt: "" })
+        context.client.sessions.updateAgentPrompt(1, { prompt: "" }),
       ).rejects.toThrow();
     });
   });

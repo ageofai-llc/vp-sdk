@@ -1,6 +1,6 @@
 import {
   createTestContext,
-  TestContext,
+  type TestContext,
   setupAuthenticatedClient,
 } from "../../setup/test-utils";
 
@@ -32,7 +32,7 @@ describe("VoiceClient", () => {
       context.mock.onPost("/voices/clone").reply(200, mockVoice);
 
       const voice = await context.client.voices.cloneVoice(
-        Buffer.from("audio data")
+        Buffer.from("audio data"),
       );
       expect(voice).toEqual(mockVoice);
     });
@@ -43,7 +43,7 @@ describe("VoiceClient", () => {
         .reply(400, { message: "Invalid audio data" });
 
       await expect(
-        context.client.voices.cloneVoice(Buffer.from("invalid data"))
+        context.client.voices.cloneVoice(Buffer.from("invalid data")),
       ).rejects.toThrow();
     });
   });
@@ -71,7 +71,7 @@ describe("VoiceClient", () => {
       context.mock.onDelete("/voices/voice1").reply(204);
 
       await expect(
-        context.client.voices.deleteVoice("voice1")
+        context.client.voices.deleteVoice("voice1"),
       ).resolves.toBeUndefined();
     });
 
@@ -81,7 +81,7 @@ describe("VoiceClient", () => {
         .reply(403, { message: "Unauthorized" });
 
       await expect(
-        context.client.voices.deleteVoice("voice1")
+        context.client.voices.deleteVoice("voice1"),
       ).rejects.toThrow();
     });
   });

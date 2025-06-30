@@ -1,9 +1,9 @@
-import { ScoreexlVoiceSdk } from "../../src";
-import MockAdapter from "axios-mock-adapter";
-import { createMockAdapter } from "./jest.setup";
 import axios from "axios";
-import { HttpClient } from "../../src/utils/http";
+import MockAdapter from "axios-mock-adapter";
+import { ScoreexlVoiceSdk } from "../../src";
 import axiosInstance from "../../src/axios";
+import { HttpClient } from "../../src/utils/http";
+import { createMockAdapter } from "./jest.setup";
 
 export interface TestContext {
   client: ScoreexlVoiceSdk;
@@ -20,7 +20,7 @@ export const createTestContext = (): TestContext => {
 
 export const setupAuthenticatedClient = async (
   client: ScoreexlVoiceSdk,
-  mock: MockAdapter
+  mock: MockAdapter,
 ): Promise<void> => {
   mock
     .onPost("/token")
@@ -51,7 +51,7 @@ export const mockSession = {
 };
 
 export const expectUnauthorizedError = async (
-  promise: Promise<any>
+  promise: Promise<any>,
 ): Promise<void> => {
   await expect(promise).rejects.toThrow();
 };

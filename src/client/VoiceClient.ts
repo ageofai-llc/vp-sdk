@@ -1,4 +1,4 @@
-import { HttpClient } from "../utils/http";
+import type { HttpClient } from "../utils/http";
 
 export class VoiceClient {
   constructor(private http: HttpClient) {}

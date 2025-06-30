@@ -1,6 +1,6 @@
 import {
   createTestContext,
-  TestContext,
+  type TestContext,
   setupAuthenticatedClient,
   mockUser,
 } from "../../setup/test-utils";
@@ -55,7 +55,7 @@ describe("UserClient", () => {
       await expect(
         context.client.users.updateCurrentUser({
           email: "invalid-email",
-        })
+        }),
       ).rejects.toThrow();
     });
   });

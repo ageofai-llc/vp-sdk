@@ -1,6 +1,6 @@
 import {
   createTestContext,
-  TestContext,
+  type TestContext,
   mockUser,
 } from "../../setup/test-utils";
 
@@ -38,7 +38,7 @@ describe("AuthClient", () => {
           username: "testuser",
           email: "test@example.com",
           password: "securepassword",
-        })
+        }),
       ).rejects.toThrow();
     });
 
@@ -52,7 +52,7 @@ describe("AuthClient", () => {
           username: "testuser",
           email: "invalid-email",
           password: "securepassword",
-        })
+        }),
       ).rejects.toThrow();
     });
   });
@@ -67,7 +67,7 @@ describe("AuthClient", () => {
 
       const response = await context.client.auth.login(
         "testuser",
-        "securepassword"
+        "securepassword",
       );
       expect(response).toEqual(mockTokenResponse);
 
@@ -86,7 +86,7 @@ describe("AuthClient", () => {
         .reply(401, { message: "Invalid credentials" });
 
       await expect(
-        context.client.auth.login("testuser", "wrongpassword")
+        context.client.auth.login("testuser", "wrongpassword"),
       ).rejects.toThrow("Authentication failed");
     });
 
@@ -96,7 +96,7 @@ describe("AuthClient", () => {
         .reply(500, { message: "Internal server error" });
 
       await expect(
-        context.client.auth.login("testuser", "password")
+        context.client.auth.login("testuser", "password"),
       ).rejects.toThrow();
     });
   });

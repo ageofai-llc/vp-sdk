@@ -1,10 +1,10 @@
-import axios, { AxiosInstance, AxiosRequestConfig } from "axios";
+import axios, { type AxiosInstance, type AxiosRequestConfig } from "axios";
 import {
   AuthenticationError,
   ScoreexlVoiceError,
   ValidationError,
 } from "./errors";
-import { ScoreexlVoiceSdkConfig } from "../types";
+import type { ScoreexlVoiceSdkConfig } from "../types";
 
 export class HttpClient {
   private client: AxiosInstance;
@@ -37,14 +37,14 @@ export class HttpClient {
           typeof data.code === "string" ? data.code : "UNKNOWN",
           typeof data.message === "string"
             ? data.message
-            : `Request failed with status ${status}`
+            : `Request failed with status ${status}`,
         );
       }
 
       throw new ScoreexlVoiceError(
         500,
         "NETWORK_ERROR",
-        "Network error occurred"
+        "Network error occurred",
       );
     }
   }

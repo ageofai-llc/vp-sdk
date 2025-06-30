@@ -8,9 +8,9 @@
     "build": "tsc",
     "prepublishOnly": "npm run build",
     "test": "jest",
-    "lint": "biome lint --write src test",
-    "format": "biome format --write src test",
-    "check": "biome check src test"
+    "lint": "biome lint --write src tests",
+    "format": "biome format --write src tests",
+    "check": "biome check src tests"
   },
   "keywords": [
     "Scoreexl",

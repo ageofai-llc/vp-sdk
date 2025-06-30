@@ -1,4 +1,4 @@
-import { HttpClient } from "../utils/http";
+import type { HttpClient } from "../utils/http";
 import { EventEmitter } from "events";
 
 export class StreamClient {
@@ -7,7 +7,7 @@ export class StreamClient {
   async streamSSE(prompt: string): Promise<EventEmitter> {
     const emitter = new EventEmitter();
     const url = new URL(
-      `${this.http["client"].defaults.baseURL}/llm/stream/sse`
+      `${this.http["client"].defaults.baseURL}/llm/stream/sse`,
     );
     url.searchParams.append("prompt", prompt);
 
@@ -22,7 +22,7 @@ export class StreamClient {
     if (!response.ok) {
       emitter.emit(
         "error",
-        new Error(`SSE request failed: ${response.status}`)
+        new Error(`SSE request failed: ${response.status}`),
       );
       return emitter;
     }
@@ -57,7 +57,7 @@ export class StreamClient {
             } catch (e) {
               emitter.emit(
                 "error",
-                new Error(`Failed to parse SSE data: ${e}`)
+                new Error(`Failed to parse SSE data: ${e}`),
               );
             }
           }

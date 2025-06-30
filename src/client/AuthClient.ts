@@ -1,5 +1,5 @@
-import { HttpClient } from "../utils/http";
-import {
+import type { HttpClient } from "../utils/http";
+import type {
   Body_login_for_access_token_token_post,
   UserCreate,
   UserOut,
@@ -28,7 +28,7 @@ export class AuthClient {
   async login(
     username: string,
     password: string,
-    options: AuthOptions = {}
+    options: AuthOptions = {},
   ): Promise<LoginResponse> {
     const payload: Record<string, string> = {
       username,

@@ -1,6 +1,6 @@
 import {
   createTestContext,
-  TestContext,
+  type TestContext,
   setupAuthenticatedClient,
 } from "../../setup/test-utils";
 

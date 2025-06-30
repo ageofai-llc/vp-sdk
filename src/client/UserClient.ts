@@ -1,5 +1,5 @@
-import { HttpClient } from "../utils/http";
-import { UserOut } from "../types";
+import type { HttpClient } from "../utils/http";
+import type { UserOut } from "../types";
 
 export class UserClient {
   constructor(private http: HttpClient) {}
@@ -12,7 +12,7 @@ export class UserClient {
   }
 
   async updateCurrentUser(
-    options: { username?: string; email?: string } = {}
+    options: { username?: string; email?: string } = {},
   ): Promise<UserOut> {
     return this.http.request<UserOut>({
       method: "PUT",

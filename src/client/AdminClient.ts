@@ -1,4 +1,4 @@
-import { HttpClient } from "../utils/http";
+import type { HttpClient } from "../utils/http";
 
 export class AdminClient {
   constructor(private http: HttpClient) {}

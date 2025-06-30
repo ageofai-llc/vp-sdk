@@ -1,5 +1,5 @@
-import { HttpClient } from "../utils/http";
-import { APIKeyCreate, APIKeyOut } from "../types";
+import type { HttpClient } from "../utils/http";
+import type { APIKeyCreate, APIKeyOut } from "../types";
 
 export class APIKeyClient {
   constructor(private http: HttpClient) {}

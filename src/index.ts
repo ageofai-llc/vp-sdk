@@ -1,16 +1,16 @@
-import { HttpClient } from "./utils/http";
-import { AuthClient } from "./client/AuthClient";
-import { SessionClient } from "./client/SessionClient";
-import { AgentClient } from "./client/AgentClient";
-import { VoiceClient } from "./client/VoiceClient";
-import { UserClient } from "./client/UserClient";
-import { WebhookClient } from "./client/WebhookClient";
-import { AdminClient } from "./client/AdminClient";
-import { StreamClient } from "./client/StreamClient";
-import { HealthClient } from "./client/HealthClient";
-import { APIKeyClient } from "./client/APIKeyClient";
 import axios from "../src/axios";
-import { ScoreexlVoiceSdkConfig } from "./types";
+import { AdminClient } from "./client/AdminClient";
+import { AgentClient } from "./client/AgentClient";
+import { APIKeyClient } from "./client/APIKeyClient";
+import { AuthClient } from "./client/AuthClient";
+import { HealthClient } from "./client/HealthClient";
+import { SessionClient } from "./client/SessionClient";
+import { StreamClient } from "./client/StreamClient";
+import { UserClient } from "./client/UserClient";
+import { VoiceClient } from "./client/VoiceClient";
+import { WebhookClient } from "./client/WebhookClient";
+import type { ScoreexlVoiceSdkConfig } from "./types";
+import { HttpClient } from "./utils/http";
 
 export class ScoreexlVoiceSdk {
   private httpClient: HttpClient;

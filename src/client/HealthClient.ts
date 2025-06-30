@@ -1,5 +1,5 @@
-import { HttpClient } from "../utils/http";
-import { HealthResponse } from "../types";
+import type { HttpClient } from "../utils/http";
+import type { HealthResponse } from "../types";
 
 export class HealthClient {
   constructor(private client: HttpClient) {}

@@ -1,6 +1,6 @@
 import {
   createTestContext,
-  TestContext,
+  type TestContext,
   setupAuthenticatedClient,
 } from "../../setup/test-utils";
 import { ReadableStream } from "stream/web";
@@ -116,7 +116,7 @@ describe("StreamClient", () => {
         .reply(500, { message: "Stream failed" });
 
       await expect(
-        context.client.stream.streamLiveKit("test prompt")
+        context.client.stream.streamLiveKit("test prompt"),
       ).rejects.toThrow();
     });
   });

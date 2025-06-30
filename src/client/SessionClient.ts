@@ -1,5 +1,5 @@
-import { HttpClient } from "../utils/http";
-import { SessionOut, TextMessage, AgentResponse, AgentControl } from "../types";
+import type { HttpClient } from "../utils/http";
+import type { SessionOut, TextMessage, AgentResponse, AgentControl } from "../types";
 
 export class SessionClient {
   constructor(private http: HttpClient) {}
@@ -34,7 +34,7 @@ export class SessionClient {
 
   async sendMessage(
     sessionId: number,
-    message: TextMessage
+    message: TextMessage,
   ): Promise<AgentResponse> {
     return this.http.request<AgentResponse>({
       method: "POST",
@@ -53,7 +53,7 @@ export class SessionClient {
 
   async getConversationHistory(
     sessionId: number,
-    options: { limit?: number; offset?: number } = {}
+    options: { limit?: number; offset?: number } = {},
   ): Promise<any> {
     return this.http.request<any>({
       method: "GET",
@@ -64,7 +64,7 @@ export class SessionClient {
 
   async addConversationLog(
     sessionId: number,
-    logEntry: Record<string, any>
+    logEntry: Record<string, any>,
   ): Promise<void> {
     return this.http.request<void>({
       method: "POST",
@@ -82,7 +82,7 @@ export class SessionClient {
 
   async updateAgentPrompt(
     sessionId: number,
-    prompt: Record<string, any>
+    prompt: Record<string, any>,
   ): Promise<void> {
     return this.http.request<void>({
       method: "POST",

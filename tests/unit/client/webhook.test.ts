@@ -1,6 +1,6 @@
 import {
   createTestContext,
-  TestContext,
+  type TestContext,
   setupAuthenticatedClient,
 } from "../../setup/test-utils";
 
@@ -51,7 +51,7 @@ describe("WebhookClient", () => {
         context.client.webhooks.createWebhook({
           url: "invalid-url",
           event: "session_ended",
-        })
+        }),
       ).rejects.toThrow();
     });
   });
@@ -92,7 +92,7 @@ describe("WebhookClient", () => {
       context.mock.onDelete("/webhooks/1").reply(204);
 
       await expect(
-        context.client.webhooks.deleteWebhook(1)
+        context.client.webhooks.deleteWebhook(1),
       ).resolves.toBeUndefined();
     });
   });
@@ -102,7 +102,7 @@ describe("WebhookClient", () => {
       context.mock.onPut("/webhooks/1/toggle").reply(204);
 
       await expect(
-        context.client.webhooks.toggleWebhook(1)
+        context.client.webhooks.toggleWebhook(1),
       ).resolves.toBeUndefined();
     });
   });
@@ -112,7 +112,7 @@ describe("WebhookClient", () => {
       context.mock.onPost("/webhooks/1/test").reply(204);
 
       await expect(
-        context.client.webhooks.testWebhook(1)
+        context.client.webhooks.testWebhook(1),
       ).resolves.toBeUndefined();
     });
   });

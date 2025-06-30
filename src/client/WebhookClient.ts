@@ -1,5 +1,5 @@
-import { HttpClient } from "../utils/http";
-import { WebhookCreate, WebhookOut } from "../types";
+import type { HttpClient } from "../utils/http";
+import type { WebhookCreate, WebhookOut } from "../types";
 
 export class WebhookClient {
   constructor(private http: HttpClient) {}
@@ -28,7 +28,7 @@ export class WebhookClient {
 
   async updateWebhook(
     webhookId: number,
-    webhook: WebhookCreate
+    webhook: WebhookCreate,
   ): Promise<WebhookOut> {
     return this.http.request<WebhookOut>({
       method: "PUT",

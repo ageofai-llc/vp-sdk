@@ -1,6 +1,6 @@
 import {
   createTestContext,
-  TestContext,
+  type TestContext,
   setupAuthenticatedClient,
   mockAgent,
 } from "../../setup/test-utils";
@@ -37,7 +37,7 @@ describe("AgentClient", () => {
         context.client.agents.createAgent({
           name: "",
           initial_prompt: "You are a helpful assistant",
-        })
+        }),
       ).rejects.toThrow();
     });
   });
@@ -102,7 +102,7 @@ describe("AgentClient", () => {
         context.client.agents.updateAgent(1, {
           name: "Updated Agent",
           initial_prompt: "",
-        })
+        }),
       ).rejects.toThrow();
     });
   });
@@ -112,7 +112,7 @@ describe("AgentClient", () => {
       context.mock.onDelete("/agents/1").reply(204);
 
       await expect(
-        context.client.agents.deleteAgent(1)
+        context.client.agents.deleteAgent(1),
       ).resolves.toBeUndefined();
     });
 
@@ -140,7 +140,7 @@ describe("AgentClient", () => {
         .reply(404, { message: "Agent not found" });
 
       await expect(
-        context.client.agents.getAgentAnalytics(1)
+        context.client.agents.getAgentAnalytics(1),
       ).rejects.toThrow();
     });
   });
@@ -150,7 +150,7 @@ describe("AgentClient", () => {
       context.mock.onPut("/agents/1/share").reply(204);
 
       await expect(
-        context.client.agents.toggleAgentSharing(1, true)
+        context.client.agents.toggleAgentSharing(1, true),
       ).resolves.toBeUndefined();
     });
 
@@ -160,7 +160,7 @@ describe("AgentClient", () => {
         .reply(403, { message: "Unauthorized" });
 
       await expect(
-        context.client.agents.toggleAgentSharing(1, true)
+        context.client.agents.toggleAgentSharing(1, true),
       ).rejects.toThrow();
     });
   });
@@ -200,7 +200,7 @@ describe("AgentClient", () => {
 
       const agent = await context.client.agents.createAgentFromTemplate(
         1,
-        "New Agent"
+        "New Agent",
       );
       expect(agent).toEqual(mockAgentFromTemplate);
     });
@@ -209,7 +209,7 @@ describe("AgentClient", () => {
       context.mock.onPost("/agent-templates/samples").reply(204);
 
       await expect(
-        context.client.agents.createSampleTemplates()
+        context.client.agents.createSampleTemplates(),
       ).resolves.toBeUndefined();
     });
   });
@@ -242,7 +242,7 @@ describe("AgentClient", () => {
       context.mock.onPut("/agents/1/versions/1/activate").reply(204);
 
       await expect(
-        context.client.agents.activateAgentVersion(1, 1)
+        context.client.agents.activateAgentVersion(1, 1),
       ).resolves.toBeUndefined();
     });
   });
@@ -262,7 +262,7 @@ describe("AgentClient", () => {
         .reply(404, { message: "Agent not found" });
 
       await expect(
-        context.client.agents.cloneAgent(1, "Cloned Agent")
+        context.client.agents.cloneAgent(1, "Cloned Agent"),
       ).rejects.toThrow();
     });
   });

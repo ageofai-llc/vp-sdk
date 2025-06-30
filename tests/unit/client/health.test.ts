@@ -1,4 +1,4 @@
-import { createTestContext, TestContext } from "../../setup/test-utils";
+import { createTestContext, type TestContext } from "../../setup/test-utils";
 
 describe("HealthClient", () => {
   let context: TestContext;
@@ -26,7 +26,7 @@ describe("HealthClient", () => {
         .reply(500, { message: "Request failed with status 500" });
 
       await expect(context.client.health.checkHealth()).rejects.toThrow(
-        "Request failed with status 500"
+        "Request failed with status 500",
       );
     });
 
