@@ -1,4 +1,3 @@
-// Health-related types
 export interface HealthResponse {
   status: string;
   cpu_usage: number;
@@ -15,7 +14,6 @@ export interface HealthResponse {
   is_accepting_new_workers: boolean;
 }
 
-// Session-related types
 export interface SessionOut {
   session_id: number;
   agent_id: number;
@@ -62,7 +60,6 @@ export interface EndSessionRequest {
   room_name: string;
 }
 
-// Agent-related types
 export interface AgentCreate {
   name: string;
   description?: string | null;
@@ -95,6 +92,7 @@ export interface AgentOut {
 }
 
 export interface AgentAnalyticsOut {
+  [x: string]: any;
   agent_id: number;
   total_sessions: number;
   total_duration_minutes: number;
@@ -158,7 +156,6 @@ export interface AgentVersionOut {
   is_active: boolean;
 }
 
-// User-related types
 export interface UserCreate {
   username: string;
   email: string;
@@ -182,7 +179,6 @@ export interface Body_login_for_access_token_token_post {
   client_secret?: string | null;
 }
 
-// Webhook-related types
 export interface WebhookCreate {
   url: string;
   event: string;
@@ -200,7 +196,6 @@ export interface WebhookOut {
   updated_at: string;
 }
 
-// API Key-related types
 export interface APIKeyCreate {
   name?: string | null;
 }
@@ -213,7 +208,6 @@ export interface APIKeyOut {
   is_active: boolean;
 }
 
-// Error-related types
 export interface ValidationError {
   loc: (string | number)[];
   msg: string;
@@ -227,6 +221,6 @@ export interface HTTPValidationError {
 export interface UserProfile {
   username: string;
   email: string;
-  created_at: string; // ISO 8601 date-time string
-  updated_at: string; // ISO 8601 date-time string
+  created_at: string;
+  updated_at: string;
 }
