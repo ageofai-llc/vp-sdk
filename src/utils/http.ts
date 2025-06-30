@@ -4,18 +4,21 @@ import {
   ScoreexlVoiceError,
   ValidationError,
 } from "./errors";
+import { ScoreexlVoiceSdkConfig } from "../types";
 
 export class HttpClient {
   private client: AxiosInstance;
 
-  constructor(baseURL: string, private authToken?: string) {
-    this.client = axios.create({
-      baseURL,
-      headers: {
-        "Content-Type": "application/json",
-        ...(authToken ? { Authorization: `Bearer ${authToken}` } : {}),
-      },
-    });
+  constructor(axios: AxiosInstance, config: ScoreexlVoiceSdkConfig = {}) {
+    this.client = axios;
+
+    if (config.baseURL) {
+      this.client.defaults.baseURL = config.baseURL;
+    }
+
+    if (config.accessToken) {
+      this.setAuthToken(config.accessToken);
+    }
   }
 
   async request<T>(config: AxiosRequestConfig): Promise<T> {
@@ -25,7 +28,6 @@ export class HttpClient {
     } catch (error) {
       if (axios.isAxiosError(error) && error.response) {
         const { status, data } = error.response;
-        console.error("Response Error:", data);
 
         if (status === 422) throw new ValidationError(data.detail);
         if (status === 401) throw new AuthenticationError();
@@ -33,7 +35,9 @@ export class HttpClient {
         throw new ScoreexlVoiceError(
           status,
           typeof data.code === "string" ? data.code : "UNKNOWN",
-          typeof data.message === "string" ? data.message : "Request failed"
+          typeof data.message === "string"
+            ? data.message
+            : `Request failed with status ${status}`
         );
       }
 
@@ -62,7 +66,6 @@ export class HttpClient {
   }
 
   setAuthToken(token: string) {
-    this.authToken = token;
     this.client.defaults.headers.common["Authorization"] = `Bearer ${token}`;
   }
 

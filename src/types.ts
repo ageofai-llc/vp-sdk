@@ -224,3 +224,9 @@ export interface UserProfile {
   created_at: string;
   updated_at: string;
 }
+
+export interface ScoreexlVoiceSdkConfig {
+  baseURL?: string;
+  apiKey?: string;
+  accessToken?: string;
+}

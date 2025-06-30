@@ -9,12 +9,8 @@ import { AdminClient } from "./client/AdminClient";
 import { StreamClient } from "./client/StreamClient";
 import { HealthClient } from "./client/HealthClient";
 import { APIKeyClient } from "./client/APIKeyClient";
-
-export interface ScoreexlVoiceSdkConfig {
-  baseURL?: string;
-  apiKey?: string;
-  accessToken?: string;
-}
+import axios from "../src/axios";
+import { ScoreexlVoiceSdkConfig } from "./types";
 
 export class ScoreexlVoiceSdk {
   private httpClient: HttpClient;
@@ -29,12 +25,8 @@ export class ScoreexlVoiceSdk {
   public health: HealthClient;
   public apiKey: APIKeyClient;
 
-  constructor(config: ScoreexlVoiceSdkConfig = {}) {
-    const DEFAULT_BASE_URL = "https://voiceagentv2.scoreexl.com";
-
-    const baseURL = config.baseURL || DEFAULT_BASE_URL;
-    const authToken = config.accessToken || config.apiKey;
-    this.httpClient = new HttpClient(baseURL, authToken);
+  constructor(httpClient?: HttpClient, config?: ScoreexlVoiceSdkConfig) {
+    this.httpClient = httpClient ?? new HttpClient(axios, config);
 
     this.auth = new AuthClient(this.httpClient);
     this.sessions = new SessionClient(this.httpClient);
