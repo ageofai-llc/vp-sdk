@@ -7,7 +7,10 @@
   "scripts": {
     "build": "tsc",
     "prepublishOnly": "npm run build",
-    "test": "jest"
+    "test": "jest",
+    "lint": "biome lint --write src test",
+    "format": "biome format --write src test",
+    "check": "biome check src test"
   },
   "keywords": [
     "Scoreexl",
@@ -21,6 +24,7 @@
     "axios": "^1.7.2"
   },
   "devDependencies": {
+    "@biomejs/biome": "2.0.6",
     "@types/jest": "^30.0.0",
     "@types/node": "^20.14.2",
     "axios-mock-adapter": "^2.1.0",
