@@ -1,53 +1,69 @@
 import type {
-  Body_login_for_access_token_token_post,
+  Token,
+  TokenRefresh,
   UserCreate,
-  UserOut,
+  UserLogin,
+  UserResponse,
 } from "../types";
+import { AuthenticationError } from "../utils/errors";
 import type { HttpClient } from "../utils/http";
-
-type AuthOptions = Partial<
-  Omit<Body_login_for_access_token_token_post, "username" | "password">
->;
-
-interface LoginResponse {
-  access_token: string;
-  token_type: string;
-}
 
 export class AuthClient {
   constructor(private http: HttpClient) {}
 
-  async register(user: UserCreate): Promise<UserOut> {
-    return this.http.request<UserOut>({
+  async register(userData: UserCreate): Promise<UserResponse> {
+    return this.http.request<UserResponse>({
       method: "POST",
-      url: "/register",
-      data: user,
+      url: "/auth/register",
+      data: userData,
     });
   }
 
-  async login(
-    username: string,
-    password: string,
-    options: AuthOptions = {},
-  ): Promise<LoginResponse> {
-    const payload: Record<string, string> = {
-      username,
-      password,
-      grant_type: options.grant_type ?? "password",
-      scope: options.scope ?? "",
-    };
-
-    if (options.client_id) payload.client_id = options.client_id;
-    if (options.client_secret) payload.client_secret = options.client_secret;
-
-    const response = await this.http.request<LoginResponse>({
+  async login(credentials: UserLogin): Promise<Token> {
+    const token = await this.http.request<Token>({
       method: "POST",
-      url: "/token",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      data: new URLSearchParams(payload),
+      url: "/auth/login",
+      data: credentials,
     });
 
-    this.http.setAuthToken(response.access_token);
-    return response;
+    this.http.setAuthToken(token.access_token);
+    this.http.setRefreshToken(token.refresh_token);
+
+    return token;
+  }
+
+  async refreshToken(refreshTokenData?: TokenRefresh): Promise<Token> {
+    const data = refreshTokenData || { refresh_token: this.refreshToken };
+
+    if (!data.refresh_token) {
+      throw new AuthenticationError("Refresh token is required");
+    }
+
+    const token = await this.http.request<Token>({
+      method: "POST",
+      url: "/auth/refresh",
+      data,
+    });
+
+    this.http.setAuthToken(token.access_token);
+    this.http.setRefreshToken(token.refresh_token);
+
+    return token;
+  }
+
+  async getCurrentUser(): Promise<UserResponse> {
+    return this.http.request<UserResponse>({
+      method: "GET",
+      url: "/auth/me",
+    });
+  }
+
+  async logout(): Promise<void> {
+    await this.http.request({
+      method: "POST",
+      url: "/auth/logout",
+    });
+
+    this.http.clearTokens();
   }
 }
