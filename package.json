@@ -21,7 +21,7 @@
   "author": "Nelson Fulfil",
   "license": "ISC",
   "dependencies": {
-    "axios": "^1.7.2"
+    "axios": "^1.11.0"
   },
   "devDependencies": {
     "@biomejs/biome": "2.0.6",
