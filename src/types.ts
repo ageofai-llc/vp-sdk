@@ -1023,4 +1023,6 @@ export interface ScoreexlVoiceSdkConfig {
   baseURL?: string;
   apiKey?: string;
   accessToken?: string;
+  refreshToken?: string;
+  headers?: Record<string, string>;
 }
