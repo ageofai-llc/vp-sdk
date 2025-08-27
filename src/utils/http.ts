@@ -1,5 +1,5 @@
 import axios, { type AxiosInstance, type AxiosRequestConfig } from "axios";
-import type { ScoreexlVoiceSdkConfig } from "../types";
+import type { SdkConfig } from "../types";
 import {
   AuthenticationError,
   ScoreexlVoiceError,
@@ -14,7 +14,7 @@ export class HttpClient {
 
   constructor(
     axios: AxiosInstance,
-    config: ScoreexlVoiceSdkConfig = {
+    config: SdkConfig = {
       baseURL: "https://voiceagentv3.scoreexl.com",
     },
   ) {
