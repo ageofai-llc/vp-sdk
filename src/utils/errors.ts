@@ -1,46 +1,91 @@
-// export class ScoreexlVoiceError extends Error {
-//   constructor(
-//     public readonly status: number,
-//     public readonly code: string,
-//     message: string
-//   ) {
-//     super(message);
-//     this.name = "ScoreexlVoiceError";
-//   }
-// }
-
-// export class ValidationError extends ScoreexlVoiceError {
-//   constructor(details: any) {
-//     super(422, "VALIDATION_ERROR", "Validation error occurred");
-//     this.details = details;
-//   }
-//   details: any;
-// }
-
-// export class AuthenticationError extends ScoreexlVoiceError {
-//   constructor(message: string = "Authentication failed") {
-//     super(401, "AUTH_ERROR", message);
-//   }
-// }
-
-export class ValidationError extends Error {
-  constructor(public details: any) {
-    super("Validation error");
-  }
-}
-
-export class AuthenticationError extends Error {
-  constructor() {
-    super("Authentication failed");
-  }
-}
-
 export class ScoreexlVoiceError extends Error {
+  public readonly statusCode?: number;
+  public readonly code?: string;
+  public readonly details?: any;
+
   constructor(
-    public status: number,
-    public code: string,
-    public message: string,
+    message: string,
+    statusCode?: number,
+    code?: string,
+    details?: any,
   ) {
     super(message);
+    this.name = "ScoreexlVoiceError";
+    this.statusCode = statusCode;
+    this.code = code;
+    this.details = details;
+
+    // Maintains proper stack trace for where our error was thrown
+    if (Error.captureStackTrace) {
+      Error.captureStackTrace(this, ScoreexlVoiceError);
+    }
+  }
+}
+
+export class AuthenticationError extends ScoreexlVoiceError {
+  constructor(
+    message: string,
+    statusCode?: number,
+    code?: string,
+    details?: any,
+  ) {
+    super(message, statusCode, code, details);
+    this.name = "AuthenticationError";
+  }
+}
+
+export class AuthorizationError extends ScoreexlVoiceError {
+  constructor(
+    message: string,
+    statusCode?: number,
+    code?: string,
+    details?: any,
+  ) {
+    super(message, statusCode, code, details);
+    this.name = "AuthorizationError";
+  }
+}
+
+export class ValidationError extends ScoreexlVoiceError {
+  constructor(
+    message: string,
+    statusCode?: number,
+    code?: string,
+    details?: any,
+  ) {
+    super(message, statusCode, code, details);
+    this.name = "ValidationError";
+  }
+}
+
+export class RateLimitError extends ScoreexlVoiceError {
+  constructor(
+    message: string,
+    statusCode?: number,
+    code?: string,
+    details?: any,
+  ) {
+    super(message, statusCode, code, details);
+    this.name = "RateLimitError";
+  }
+}
+
+export class ServerError extends ScoreexlVoiceError {
+  constructor(
+    message: string,
+    statusCode?: number,
+    code?: string,
+    details?: any,
+  ) {
+    super(message, statusCode, code, details);
+    this.name = "ServerError";
+  }
+}
+
+export class NetworkError extends ScoreexlVoiceError {
+  constructor(message: string, originalError?: any) {
+    super(message);
+    this.name = "NetworkError";
+    // this.details = { originalError };
   }
 }
