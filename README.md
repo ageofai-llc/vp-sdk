@@ -1,6 +1,6 @@
 # vp-sdk
 
-[![npm version](https://img.shields.io/npm/v/ageofai/vp-sdk)](https://www.npmjs.com/package/ageofai/vp-sdk)
+[![npm version](https://img.shields.io/npm/v/@ageofai/vp-sdk)](https://www.npmjs.com/package/@ageofai/vp-sdk)
 [![License](https://img.shields.io/badge/license-Proprietary-blue)](LICENSE)
 [![Node.js](https://img.shields.io/badge/node-%3E%3D16.0.0-brightgreen)]()
 [![TypeScript](https://img.shields.io/badge/typescript-supported-blue)]()
@@ -22,16 +22,16 @@ The official Node.js SDK for the Scoreexl API—a secure audio AI platform provi
 
 ```bash
 # npm
-npm install ageofai/vp-sdk
+npm install @ageofai/vp-sdk
 
 # yarn
-yarn add ageofai/vp-sdk
+yarn add @ageofai/vp-sdk
 ```
 
 ## Quick Start
 
 ```javascript
-const { ScoreexlClient } = require('ageofai/vp-sdk');
+const { ScoreexlClient } = require('@ageofai/vp-sdk');
 (async () => {
   const client = new ScoreexlClient({ apiKey: 'YOUR_API_KEY' });
   try {
@@ -220,7 +220,7 @@ const {
   RateLimitError,
   TranscriptionError,
   SynthesisError
-} = require('ageofai/vp-sdk').errors;
+} = require('@ageofai/vp-sdk').errors;
 
 try {
   await client.auth.login({ email, password });
@@ -267,7 +267,7 @@ await client.stt.transcribe({ file: new File([blob], 'audio.wav') });
 Full type definitions are included.
 
 ```typescript
-import { ScoreexlClient, AuthClient } from 'ageofai/vp-sdk';
+import { ScoreexlClient, AuthClient } from '@ageofai/vp-sdk';
 const client: ScoreexlClient = new ScoreexlClient({ apiKey: 'KEY' });
 ```
 
@@ -304,7 +304,7 @@ const fs = require('fs');
 
 ```javascript
 const fs = require('fs');
-const { TranscriptionError } = require('ageofai/vp-sdk').errors;
+const { TranscriptionError } = require('@ageofai/vp-sdk').errors;
 
 (async () => {
   const client = new ScoreexlClient({ apiKey: 'YOUR_API_KEY' });
@@ -337,9 +337,9 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
 
 ## Support
 
-Open an issue in this repository or email supportageofai.com.
+Open an issue in this repository
 
-## License
+<!-- ## License
 
 Proprietary. See [LICENSE](LICENSE).
 
@@ -357,4 +357,4 @@ Works in Node.js and modern browsers.
 
 ## Security
 
-Report vulnerabilities to securityageofai.com.
+Report vulnerabilities to security@ageofai.com. -->
