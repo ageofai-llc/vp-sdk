@@ -26,7 +26,7 @@ export const setupAuthenticatedClient = async (
     .onPost("/token")
     .reply(200, { access_token: "test-token", token_type: "bearer" });
 
-  await client.auth.login("testuser", "securepassword");
+  await client.auth.login({ username: "testuser", password: "securepassword" });
 };
 
 export const mockUser = {
