@@ -1019,7 +1019,7 @@ export enum WebhookEventType {
   ERROR_OCCURRED = "error_occurred",
 }
 
-export interface ScoreexlVoiceSdkConfig {
+export interface SdkConfig {
   baseURL?: string;
   apiKey?: string;
   accessToken?: string;
