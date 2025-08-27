@@ -31,9 +31,9 @@ yarn add @ageofai/vp-sdk
 ## Quick Start
 
 ```javascript
-const { ScoreexlClient } = require('@ageofai/vp-sdk');
+const { VpSdk } = require('@ageofai/vp-sdk');
 (async () => {
-  const client = new ScoreexlClient({ apiKey: 'YOUR_API_KEY' });
+  const client = new VpSdk({ apiKey: 'YOUR_API_KEY' });
   try {
     // Register & log in
     const user = await client.auth.register({ email: 'user@example.com', password: 'StrongP@ssw0rd' });
@@ -239,7 +239,7 @@ try {
 
 ### Custom Axios Configuration
 ```javascript
-const client = new ScoreexlClient({
+const client = new VpSdk({
   apiKey: 'KEY',
   axiosConfig: { baseURL: 'https://api.scoreexl.com', timeout: 10000 }
 });
@@ -267,8 +267,8 @@ await client.stt.transcribe({ file: new File([blob], 'audio.wav') });
 Full type definitions are included.
 
 ```typescript
-import { ScoreexlClient, AuthClient } from '@ageofai/vp-sdk';
-const client: ScoreexlClient = new ScoreexlClient({ apiKey: 'KEY' });
+import { VpSdk, AuthClient } from '@ageofai/vp-sdk';
+const client: VpSdk = new VpSdk({ apiKey: 'KEY' });
 ```
 
 ## Examples
@@ -278,7 +278,7 @@ const client: ScoreexlClient = new ScoreexlClient({ apiKey: 'KEY' });
 ```javascript
 const fs = require('fs');
 (async () => {
-  const client = new ScoreexlClient({ apiKey: 'YOUR_API_KEY' });
+  const client = new VpSdk({ apiKey: 'YOUR_API_KEY' });
   await client.auth.login({ email: 'user@example.com', password: 'StrongP@ssw0rd' });
 
   const voices = await client.tts.listVoices();
@@ -307,7 +307,7 @@ const fs = require('fs');
 const { TranscriptionError } = require('@ageofai/vp-sdk').errors;
 
 (async () => {
-  const client = new ScoreexlClient({ apiKey: 'YOUR_API_KEY' });
+  const client = new VpSdk({ apiKey: 'YOUR_API_KEY' });
   try {
     await client.auth.login({ email: 'user@example.com', password: 'StrongP@ssw0rd' });
     const fileStream = fs.createReadStream('input.wav');
