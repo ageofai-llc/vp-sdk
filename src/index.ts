@@ -1,3 +1,3 @@
 export * from "./types";
 export * from "./utils/errors";
-export { VpSdk as ScoreexlVoiceSdk } from "./vp-sdk-client";
+export { VpSdk } from "./vp-sdk";
