@@ -49,4 +49,24 @@ export class VpSdk {
   setAuthToken(token: string) {
     this.httpClient.setAuthToken(token);
   }
+
+  setAccessToken(token: string): void {
+    this.httpClient.setAccessToken(token);
+  }
+
+  setRefreshToken(token: string): void {
+    this.httpClient.setRefreshToken(token);
+  }
+
+  getRefreshToken(): void {
+    this.httpClient.getRefreshToken();
+  }
+
+  getAccessToken(): void {
+    this.httpClient.getAccessToken();
+  }
+
+  clearTokens(): void {
+    this.httpClient.clearTokens();
+  }
 }
