@@ -8,6 +8,7 @@ import { NotificationsClient } from "./client/NotificationsClient";
 import { RAGClient } from "./client/RAGClient";
 import { STTClient } from "./client/STTClient";
 import { TTSClient } from "./client/TTSClient";
+import { UsageTrackingClient } from "./client/UsageTrackingClient";
 import { UsersClient } from "./client/UsersClient";
 import { VoicesClient } from "./client/VoicesClient";
 import type { SdkConfig } from "./types";
@@ -21,11 +22,12 @@ export class VpSdk {
   public voices: VoicesClient;
   public users: UsersClient;
   public credits: CreditsClient;
-  public admin: AnalyticsClient;
+  public analytics: AnalyticsClient;
   public stt: STTClient;
-  public health: RAGClient;
+  public rag: RAGClient;
   public apiKey: APIKeysClient;
   public tts: TTSClient;
+  public usageTracking: UsageTrackingClient;
 
   constructor(httpClient?: HttpClient, config?: SdkConfig) {
     this.httpClient = httpClient ?? new HttpClient(axios, config);
@@ -36,11 +38,12 @@ export class VpSdk {
     this.voices = new VoicesClient(this.httpClient);
     this.users = new UsersClient(this.httpClient);
     this.credits = new CreditsClient(this.httpClient);
-    this.admin = new AnalyticsClient(this.httpClient);
+    this.analytics = new AnalyticsClient(this.httpClient);
     this.stt = new STTClient(this.httpClient);
-    this.health = new RAGClient(this.httpClient);
+    this.rag = new RAGClient(this.httpClient);
     this.apiKey = new APIKeysClient(this.httpClient);
     this.tts = new TTSClient(this.httpClient);
+    this.usageTracking = new UsageTrackingClient(this.httpClient);
   }
 
   setAuthToken(token: string) {
