@@ -155,4 +155,16 @@ export class HttpClient {
     this.refreshToken = undefined;
     delete this.client.defaults.headers.common["Authorization"];
   }
+
+  setAccessToken(token: string): void {
+    this.accessToken = token;
+  }
+
+  getRefreshToken(): string | undefined {
+    return this.refreshToken;
+  }
+
+  getAccessToken(): string | undefined {
+    return this.accessToken;
+  }
 }
