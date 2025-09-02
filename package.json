@@ -1,7 +1,7 @@
 {
   "name": "@agoai/vp-sdk",
   "version": "0.0.2",
-  "description": "Node.js SDK for the VP ice Assistant API",
+  "description": "Official Node.js SDK for the Vp API",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
@@ -16,11 +16,21 @@
     "type": "git",
     "url": "https://github.com/ageofai-llc/vp-sdk.git"
   },
+  "bugs": {
+    "url": "https://github.com/ageofai-llc/vp-sdk/issues"
+  },
+  "homepage": "https://github.com/ageofai-llc/vp-sdk#readme",
   "keywords": [
     "vp-sdk",
+    "api",
+    "sdk",
+    "tts",
+    "stt",
     "voice",
     "ai",
-    "sdk"
+    "speech",
+    "text-to-speech",
+    "speech-to-text"
   ],
   "author": "Age Of AI",
   "license": "ISC",
